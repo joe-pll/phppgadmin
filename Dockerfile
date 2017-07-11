@@ -1,5 +1,5 @@
 FROM alpine:3.6
-MAINTAINER joe-pll
+MAINTAINER Giuseppe Pellegrino <g.pellegrino@tadaweb.com>
 
 RUN apk update && \
     apk add lighttpd php5-common php5-gd php5-curl php5-pgsql php5-cgi fcgi php5-pdo php5-pdo_pgsql php5-dom php5-pgsql postgresql-client && \
@@ -18,7 +18,7 @@ COPY config.inc.php /var/www/localhost/phppgadmin/conf/config.inc.php
 
 RUN chmod +x /var/www/localhost/phppgadmin/conf/config.inc.php
 
-ENV PHPPGADMIN_PORT 80
+ENV PHPPGADMIN_PORT 8060
 ENV POSTGRESQL_DEFAULT_DB defaultdb
 # comma separated list of nodes
 ENV POSTGRESQL_HOSTS localhost:5432
