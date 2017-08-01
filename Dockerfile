@@ -18,8 +18,9 @@ COPY config.inc.php /var/www/localhost/phppgadmin/conf/config.inc.php
 
 RUN chmod +x /var/www/localhost/phppgadmin/conf/config.inc.php
 
+ENV POSTGRESQL_SSL_MODE allow
 ENV PHPPGADMIN_PORT 8060
-ENV POSTGRESQL_DEFAULT_DB defaultdb
+#ENV POSTGRESQL_DEFAULT_DB defaultdb
 # comma separated list of nodes
 ENV POSTGRESQL_HOSTS localhost:5432
 

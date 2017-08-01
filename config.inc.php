@@ -32,12 +32,18 @@
 	    // Database SSL mode
 	    // Possible options: disable, allow, prefer, require
 	    // To require SSL on older servers use option: legacy
-	    // To ignore the SSL mode, use option: unspecified
+        // To ignore the SSL mode, use option: unspecified
+        $ssl_mode = "allow";
+        if (getenv('POSTGRESQL_SSL_MODE') !== false) {
+            $ssl_mode = getenv('POSTGRESQL_SSL_MODE');
+        }
 	    $conf['servers'][$i]['sslmode'] = 'allow';
 
 	    // Change the default database only if you cannot connect to template1.
-	    // For a PostgreSQL 8.1+ server, you can set this to 'postgres'.
-	    $conf['servers'][$i]['defaultdb'] = getenv('POSTGRESQL_DEFAULT_DB');
+        // For a PostgreSQL 8.1+ server, you can set this to 'postgres'.
+        if (getenv('POSTGRESQL_DEFAULT_DB') !== false) {
+            $conf['servers'][$i]['defaultdb'] = getenv('POSTGRESQL_DEFAULT_DB');
+        }
 
 	    // Specify the path to the database dump utilities for this server.
 	    // You can set these to '' if no dumper is available.
